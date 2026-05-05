@@ -6,9 +6,15 @@
   <title>Mohammad Fazli | Portfolio</title>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Arial, sans-serif;
@@ -123,7 +129,9 @@
       display: block;
     }
 
-    .profile-circle:hover { transform: scale(1.06); }
+    .profile-circle:hover {
+      transform: scale(1.06);
+    }
 
     h1 {
       font-size: 42px;
@@ -155,7 +163,9 @@
     }
 
     @keyframes cursorBlink {
-      50% { border-color: transparent; }
+      50% {
+        border-color: transparent;
+      }
     }
 
     .hero-info {
@@ -210,7 +220,9 @@
       transition: 0.6s;
     }
 
-    .btn:hover::after { left: 120%; }
+    .btn:hover::after {
+      left: 120%;
+    }
 
     .btn:hover {
       transform: translateY(-5px) scale(1.05);
@@ -240,7 +252,7 @@
     }
 
     nav {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.75);
       backdrop-filter: blur(18px);
       padding: 14px;
       text-align: center;
@@ -309,10 +321,15 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
-      align-items: start;
+      align-items: stretch;
     }
 
-    
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+      align-items: stretch;
+    }
 
     .card, .skill, .project {
       background: linear-gradient(180deg, #ffffff, #f8fafc);
@@ -322,6 +339,12 @@
       transition: 0.3s;
       position: relative;
       overflow: hidden;
+    }
+
+    .project {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .project::before,
@@ -355,7 +378,7 @@
 
     .project-img {
       width: 100%;
-      height: 220px;
+      height: 190px;
       object-fit: cover;
       object-position: center;
       border-radius: 16px;
@@ -365,7 +388,9 @@
       transition: 0.4s ease;
     }
 
-    .project:hover .project-img { transform: scale(1.04); }
+    .project:hover .project-img {
+      transform: scale(1.04);
+    }
 
     .tag {
       display: inline-block;
@@ -388,10 +413,13 @@
       margin-right: 20px;
     }
 
-    li { margin-bottom: 6px; }
+    li {
+      margin-bottom: 6px;
+    }
 
     .project-buttons {
-      margin-top: 15px;
+      margin-top: auto;
+      padding-top: 18px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -424,7 +452,9 @@
       z-index: 1;
     }
 
-    .contact-box p { margin-bottom: 10px; }
+    .contact-box p {
+      margin-bottom: 10px;
+    }
 
     .contact-box a {
       color: #bfdbfe;
@@ -449,7 +479,19 @@
       transform: translateY(0);
     }
 
-  
+    @media (max-width: 900px) {
+      .grid,
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .language-switch {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+      }
 
       body[dir="rtl"] .language-switch {
         right: auto;
@@ -466,9 +508,13 @@
         min-height: auto;
       }
 
-      h1 { font-size: 35px; }
+      h1 {
+        font-size: 35px;
+      }
 
-      .hero-subtitle { font-size: 17px; }
+      .hero-subtitle {
+        font-size: 17px;
+      }
 
       .profile-circle {
         width: 125px;
@@ -480,69 +526,19 @@
         font-size: 14px;
       }
 
-      section { padding: 25px; }
+      section {
+        padding: 25px;
+      }
 
-      h2 { font-size: 24px; }
+      h2 {
+        font-size: 24px;
+      }
+
+      .grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
     }
-
-    @media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 650px) {
-  .language-switch {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-  }
-
-  body[dir="rtl"] .language-switch {
-    right: auto;
-    left: 12px;
-  }
-
-  .language-switch button {
-    padding: 7px 10px;
-    font-size: 12px;
-  }
-
-  header {
-    padding: 70px 18px 45px;
-    min-height: auto;
-  }
-
-  h1 {
-    font-size: 35px;
-  }
-
-  .hero-subtitle {
-    font-size: 17px;
-  }
-
-  .profile-circle {
-    width: 125px;
-    height: 125px;
-  }
-
-  nav a {
-    margin: 4px;
-    font-size: 14px;
-  }
-
-  section {
-    padding: 25px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
   </style>
 </head>
 
@@ -556,7 +552,6 @@
 
 <header>
   <div class="hero-card">
-
     <div class="profile-circle">
       <img src="images/profil.jpg" alt="Profilbild von Mohammad Fazli">
     </div>
@@ -618,7 +613,7 @@
     <h2 data-key="projectsTitle"></h2>
     <p class="section-intro" data-key="projectsIntro"></p>
 
-    <div class="grid">
+    <div class="project-grid">
 
       <div class="project">
         <h3 data-key="projectCalcTitle"></h3>
@@ -654,18 +649,17 @@
           <li data-key="projectChatLi4"></li>
         </ul>
 
-        
-         <div class="project-buttons">
+        <div class="project-buttons">
           <a href="https://uschatsecure.onrender.com" target="_blank" class="btn btn-secondary">
             🔗 Live Demo
           </a>
 
           <a href="https://github.com/mohammadfazli5566-ctrl/UsChat" target="_blank" class="btn btn-dark">
             💻 GitHub Code
-        </a>
-
+          </a>
+        </div>
       </div>
-     </div>
+
       <div class="project">
         <h3 data-key="projectMenuTitle"></h3>
         <img src="images/menu-project.jpg" alt="Digital QR Menu" class="project-img">
@@ -837,7 +831,6 @@
       heroBtnProjects: "🚀 Projekte ansehen",
       heroBtnSkills: "💻 Kenntnisse",
       heroBtnContact: "📩 Kontakt aufnehmen",
-
       navAbout: "Über mich",
       navSkills: "Kenntnisse",
       navProjects: "Projekte",
@@ -845,49 +838,38 @@
       navEducation: "Bildung",
       navContact: "Kontakt",
       navLearning: "Lernen",
-
       aboutTitle: "Über mich",
       aboutIntro: "Ich befinde mich aktuell in einer Umschulung zum Fachinformatiker für Anwendungsentwicklung am Comcave College in Duisburg.",
       aboutText: "Mein Schwerpunkt liegt auf Python, Flask, SQL, Webentwicklung und datenbankgestützten Anwendungen. Durch eigene Projekte baue ich meine praktischen Fähigkeiten Schritt für Schritt aus. Besonders interessieren mich Backend-Entwicklung, Datenbanken, sichere Login-Systeme und moderne Webanwendungen.",
-
       skillsTitle: "IT-Kenntnisse",
-
       projectsTitle: "Projekte",
       projectsIntro: "Hier zeige ich eigene Projekte, mit denen ich meine Kenntnisse in Webentwicklung, Datenbanken und Softwareentwicklung praktisch anwende.",
-
       projectCalcTitle: "C# Taschenrechner",
       projectCalcText: "Ein kleines Konsolenprojekt zum Üben der C# Grundlagen. Das Programm führt einfache Rechenoperationen aus.",
       projectCalcLi1: "Eingabe von Zahlen über die Konsole",
       projectCalcLi2: "Rechnen mit +, -, * und /",
       projectCalcLi3: "if-else Bedingungen",
       projectCalcLi4: "Fehlerbehandlung bei Division durch 0",
-
-      projectChatTitle: "Chat-Anwendung mit Python & Flask",
       projectChatText: "Eine eigene Webanwendung mit Registrierung, Login, Datenbankanbindung und Datei-Upload.",
       projectChatLi1: "Benutzerregistrierung und Login-System",
       projectChatLi2: "Datenbankanbindung mit SQLite",
       projectChatLi3: "Backend-Logik mit Flask",
       projectChatLi4: "Upload-Funktion für Dateien",
-
       projectMenuTitle: "Restaurant Menü System & QR Lösung",
       projectMenuText: "Eine moderne digitale Speisekarte, optimiert für Smartphone, Struktur und einfache Bedienung.",
       projectMenuLi1: "Mobile Ansicht",
       projectMenuLi2: "Kategorien für Speisen und Getränke",
       projectMenuLi3: "Modernes Webdesign",
       projectMenuLi4: "Responsive Darstellung",
-
       projectPortfolioTitle: "Portfolio-Website",
       projectPortfolioText: "Meine eigene Portfolio-Website zur Präsentation meiner Kenntnisse, Projekte und beruflichen Entwicklung.",
       projectPortfolioLi1: "Modernes Webdesign",
       projectPortfolioLi2: "Responsive Darstellung",
       projectPortfolioLi3: "Projektübersicht",
       projectPortfolioLi4: "Kontaktbereich",
-
-      projectDiscuss: "Projekt besprechen",
       menuView: "📄 Menü ansehen",
       contactShort: "📩 Kontakt",
       contactButton: "Kontakt aufnehmen",
-
       learningTitle: "Lernfortschritt",
       learningIntro: "Ich erweitere kontinuierlich meine Kenntnisse in der Softwareentwicklung und arbeite aktiv daran, neue Technologien zu verstehen und praktisch anzuwenden.",
       learningCard1Title: "C# & .NET Grundlagen",
@@ -898,7 +880,6 @@
       learningCard2Li1: "Logisches Denken & Problemlösung",
       learningCard2Li2: "Strukturierte Programmierung",
       learningCard2Li3: "Schrittweises Lernen neuer Technologien",
-
       experienceTitle: "Berufserfahrung",
       exp1Title: "Glasfasermonteur – Vovomax GmbH",
       exp1Li1: "Installation und Wartung von Glasfasernetzen",
@@ -911,7 +892,6 @@
       exp3Li1: "Schichtleitung und Koordination des Teams",
       exp3Li2: "Organisation der Arbeitsabläufe",
       exp3Li3: "Verantwortung für Qualität und Kundenservice",
-
       educationTitle: "Bildung",
       edu1Title: "Umschulung zum Fachinformatiker für Anwendungsentwicklung",
       edu1Date: "seit 07/2025 – Comcave College Duisburg",
@@ -921,12 +901,10 @@
       edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
       edu3Title: "Fachoberschulreife (FOR-Q)",
       edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
-
       contactTitle: "Kontakt",
       emailLabel: "E-Mail",
       locationLabel: "Standort",
       contactNow: "📩 Jetzt Kontakt aufnehmen",
-
       footerText: "© 2026 Mohammad Fazli | Portfolio-Webseite"
     },
 
@@ -937,7 +915,6 @@
       heroBtnProjects: "🚀 View Projects",
       heroBtnSkills: "💻 Skills",
       heroBtnContact: "📩 Contact Me",
-
       navAbout: "About me",
       navSkills: "Skills",
       navProjects: "Projects",
@@ -945,49 +922,38 @@
       navEducation: "Education",
       navContact: "Contact",
       navLearning: "Learning",
-
       aboutTitle: "About me",
       aboutIntro: "I am currently completing retraining as an IT specialist for application development at Comcave College in Duisburg.",
       aboutText: "My focus is on Python, Flask, SQL, web development and database-driven applications. Through my own projects, I improve my practical skills step by step. I am especially interested in backend development, databases, secure login systems and modern web applications.",
-
       skillsTitle: "IT Skills",
-
       projectsTitle: "Projects",
       projectsIntro: "Here I present my own projects, where I apply my knowledge in web development, databases and software development in practice.",
-
       projectCalcTitle: "C# Calculator",
       projectCalcText: "A small console project to practice C# basics. The program performs simple arithmetic operations.",
       projectCalcLi1: "Input of numbers through the console",
       projectCalcLi2: "Calculations with +, -, * and /",
       projectCalcLi3: "if-else conditions",
       projectCalcLi4: "Error handling for division by zero",
-
-      projectChatTitle: "Chat Application with Python & Flask",
       projectChatText: "A web application with registration, login, database connection and file upload.",
       projectChatLi1: "User registration and login system",
       projectChatLi2: "Database connection with SQLite",
       projectChatLi3: "Backend logic with Flask",
       projectChatLi4: "File upload feature",
-
       projectMenuTitle: "Restaurant Menu System & QR Solution",
       projectMenuText: "A modern digital menu optimized for smartphones, clear structure and easy use.",
       projectMenuLi1: "Mobile view",
       projectMenuLi2: "Categories for food and drinks",
       projectMenuLi3: "Modern web design",
       projectMenuLi4: "Responsive layout",
-
       projectPortfolioTitle: "Portfolio Website",
       projectPortfolioText: "My personal portfolio website to present my skills, projects and professional development.",
       projectPortfolioLi1: "Modern web design",
       projectPortfolioLi2: "Responsive layout",
       projectPortfolioLi3: "Project overview",
       projectPortfolioLi4: "Contact section",
-
-      projectDiscuss: "Discuss Project",
       menuView: "📄 View Menu",
       contactShort: "📩 Contact",
       contactButton: "Contact Me",
-
       learningTitle: "Learning Progress",
       learningIntro: "I continuously expand my software development skills and actively work on understanding and applying new technologies in practice.",
       learningCard1Title: "C# & .NET Basics",
@@ -998,7 +964,6 @@
       learningCard2Li1: "Logical thinking & problem solving",
       learningCard2Li2: "Structured programming",
       learningCard2Li3: "Step-by-step learning of new technologies",
-
       experienceTitle: "Work Experience",
       exp1Title: "Fiber Optic Technician – Vovomax GmbH",
       exp1Li1: "Installation and maintenance of fiber optic networks",
@@ -1011,7 +976,6 @@
       exp3Li1: "Shift management and team coordination",
       exp3Li2: "Organization of work processes",
       exp3Li3: "Responsibility for quality and customer service",
-
       educationTitle: "Education",
       edu1Title: "Retraining as IT Specialist for Application Development",
       edu1Date: "since 07/2025 – Comcave College Duisburg",
@@ -1021,12 +985,10 @@
       edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
       edu3Title: "Secondary School Certificate (FOR-Q)",
       edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
-
       contactTitle: "Contact",
       emailLabel: "Email",
       locationLabel: "Location",
       contactNow: "📩 Contact Me Now",
-
       footerText: "© 2026 Mohammad Fazli | Portfolio Website"
     },
 
@@ -1037,7 +999,6 @@
       heroBtnProjects: "🚀 مشاهده پروژه‌ها",
       heroBtnSkills: "💻 مهارت‌ها",
       heroBtnContact: "📩 تماس با من",
-
       navAbout: "درباره من",
       navSkills: "مهارت‌ها",
       navProjects: "پروژه‌ها",
@@ -1045,49 +1006,38 @@
       navEducation: "تحصیلات",
       navContact: "تماس",
       navLearning: "یادگیری",
-
       aboutTitle: "درباره من",
       aboutIntro: "من در حال حاضر در دوره آموزش مجدد رشته Fachinformatiker für Anwendungsentwicklung در Comcave College Duisburg هستم.",
       aboutText: "تمرکز من روی Python، Flask، SQL، توسعه وب و برنامه‌های مبتنی بر دیتابیس است. با انجام پروژه‌های شخصی، مهارت‌های عملی خود را مرحله‌به‌مرحله تقویت می‌کنم. به توسعه بک‌اند، دیتابیس‌ها، سیستم‌های ورود امن و وب‌اپلیکیشن‌های مدرن علاقه زیادی دارم.",
-
       skillsTitle: "مهارت‌های IT",
-
       projectsTitle: "پروژه‌ها",
       projectsIntro: "اینجا پروژه‌های شخصی خود را نشان می‌دهم که در آن‌ها دانش خود را در توسعه وب، دیتابیس و برنامه‌نویسی به صورت عملی استفاده کرده‌ام.",
-
       projectCalcTitle: "ماشین حساب با C#",
       projectCalcText: "یک پروژه کوچک کنسولی برای تمرین مبانی C#. این برنامه عملیات ساده ریاضی انجام می‌دهد.",
       projectCalcLi1: "وارد کردن عدد از طریق کنسول",
       projectCalcLi2: "محاسبه با +، -، * و /",
       projectCalcLi3: "شرط‌های if-else",
       projectCalcLi4: "مدیریت خطا هنگام تقسیم بر صفر",
-
-      projectChatTitle: "برنامه چت با Python و Flask",
       projectChatText: "یک وب‌اپلیکیشن با ثبت‌نام، ورود، اتصال به دیتابیس و آپلود فایل.",
       projectChatLi1: "سیستم ثبت‌نام و ورود کاربران",
       projectChatLi2: "اتصال به دیتابیس با SQLite",
       projectChatLi3: "منطق بک‌اند با Flask",
       projectChatLi4: "امکان آپلود فایل",
-
       projectMenuTitle: "سیستم منوی رستوران و QR",
       projectMenuText: "یک منوی دیجیتال مدرن، مناسب موبایل، ساختارمند و ساده برای استفاده.",
       projectMenuLi1: "نمایش مناسب موبایل",
       projectMenuLi2: "دسته‌بندی غذاها و نوشیدنی‌ها",
       projectMenuLi3: "طراحی وب مدرن",
       projectMenuLi4: "طراحی واکنش‌گرا",
-
       projectPortfolioTitle: "وبسایت پورتفولیو",
       projectPortfolioText: "وبسایت شخصی من برای نمایش مهارت‌ها، پروژه‌ها و مسیر پیشرفت حرفه‌ای.",
       projectPortfolioLi1: "طراحی وب مدرن",
       projectPortfolioLi2: "نمایش واکنش‌گرا",
       projectPortfolioLi3: "نمایش پروژه‌ها",
       projectPortfolioLi4: "بخش تماس",
-
-      projectDiscuss: "گفتگو درباره پروژه",
       menuView: "📄 مشاهده منو",
       contactShort: "📩 تماس",
       contactButton: "تماس با من",
-
       learningTitle: "روند یادگیری",
       learningIntro: "من به صورت مداوم مهارت‌های خود را در توسعه نرم‌افزار افزایش می‌دهم و تلاش می‌کنم فناوری‌های جدید را بهتر بفهمم و به صورت عملی استفاده کنم.",
       learningCard1Title: "مبانی C# و .NET",
@@ -1098,7 +1048,6 @@
       learningCard2Li1: "تفکر منطقی و حل مسئله",
       learningCard2Li2: "برنامه‌نویسی ساختاریافته",
       learningCard2Li3: "یادگیری مرحله‌به‌مرحله فناوری‌های جدید",
-
       experienceTitle: "تجربه کاری",
       exp1Title: "تکنسین فیبر نوری – Vovomax GmbH",
       exp1Li1: "نصب و نگهداری شبکه‌های فیبر نوری",
@@ -1111,7 +1060,6 @@
       exp3Li1: "مدیریت شیفت و هماهنگی تیم",
       exp3Li2: "سازماندهی روند کار",
       exp3Li3: "مسئولیت کیفیت و خدمات مشتری",
-
       educationTitle: "تحصیلات",
       edu1Title: "آموزش مجدد Fachinformatiker für Anwendungsentwicklung",
       edu1Date: "از 07/2025 – Comcave College Duisburg",
@@ -1121,12 +1069,10 @@
       edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
       edu3Title: "مدرک FOR-Q",
       edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
-
       contactTitle: "تماس",
       emailLabel: "ایمیل",
       locationLabel: "محل",
       contactNow: "📩 همین حالا تماس بگیرید",
-
       footerText: "© 2026 Mohammad Fazli | وبسایت پورتفولیو"
     }
   };
