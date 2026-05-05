@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammad Fazli | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,0.12), transparent 30%),
+        linear-gradient(180deg, #eef2f7, #f8fafc);
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 92vh;
+      background:
+        linear-gradient(rgba(8, 20, 45, 0.72), rgba(8, 20, 45, 0.80)),
+        url("images/city-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 70px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37,99,235,0.4), transparent);
+      top: -150px;
+      left: -150px;
+      filter: blur(80px);
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99,102,241,0.3), transparent);
+      bottom: -150px;
+      right: -150px;
+      filter: blur(80px);
+    }
+
+    .hero-card {
+      max-width: 900px;
+      width: 100%;
+      padding: 20px 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-circle {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.85);
+      background: #020617;
+      box-shadow: 0 15px 50px rgba(37,99,235,0.45);
+      margin: 0 auto 20px;
+      transition: 0.3s;
+    }
+
+    .profile-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
+    }
+
+    .profile-circle:hover {
+      transform: scale(1.06);
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #ffffff, #93c5fd, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      font-weight: bold;
+      color: #e0f2fe;
+      margin-bottom: 13px;
+      text-shadow: 0 5px 18px rgba(0,0,0,0.45);
+    }
+
+    .typing-text {
+      border-right: 3px solid white;
+      padding-right: 6px;
+      animation: cursorBlink 0.8s infinite;
+    }
+
+    @keyframes cursorBlink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .hero-info {
+      max-width: 760px;
+      margin: 0 auto 20px;
+      color: #dbeafe;
+      font-size: 17px;
+    }
+
+    .hero-features {
+      display: inline-block;
+      margin: 22px 0;
+      color: #cbd5e1;
+      font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+      transition: 0.6s;
+    }
+
+    .btn:hover::after {
+      left: 120%;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 0 25px rgba(37,99,235,0.5);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ffffff, #dbeafe);
+      color: #1e40af;
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+    }
+
+    .btn-glass {
+      background: rgba(255,255,255,0.14);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-dark {
+      background: linear-gradient(135deg, #111827, #020617);
+      color: white;
+    }
+
+    nav {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      padding: 14px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(37,99,235,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    nav a {
+      color: #111827;
+      text-decoration: none;
+      margin: 0 5px;
+      font-weight: bold;
+      padding: 9px 15px;
+      border-radius: 999px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 45px 20px;
+    }
+
+    section {
+      margin-bottom: 35px;
+      padding: 36px;
+      background: white;
+      border-radius: 26px;
+      box-shadow: 0 14px 35px rgba(15,23,42,0.08);
+      border: 1px solid rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      color: #111827;
+      margin-bottom: 22px;
+      font-size: 30px;
+      border-left: 7px solid #2563eb;
+      padding-left: 14px;
+    }
+
+    .section-intro {
+      margin-bottom: 20px;
+      color: #4b5563;
+      max-width: 800px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .card, .skill, .project {
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid #e5e7eb;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::before,
+    .card::before,
+    .skill::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #60a5fa, #9333ea);
+    }
+
+    .card:hover, .skill:hover, .project:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 18px 45px rgba(15,23,42,0.14);
+      border-color: #bfdbfe;
+    }
+
+    .skill {
+      text-align: center;
+      font-weight: bold;
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+    }
+
+    .project h3, .card h3 {
+      margin-bottom: 10px;
+      color: #1d4ed8;
+    }
+
+    .project-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      margin: 12px 0 16px;
+      border: 1px solid #e5e7eb;
+      background: #e5e7eb;
+      transition: 0.4s ease;
+    }
+
+    .project:hover .project-img {
+      transform: scale(1.04);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 4px 4px 10px 0;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 8px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .project-buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      padding: 32px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(30,58,138,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(96,165,250,0.35), transparent);
+      top: -120px;
+      left: -120px;
+    }
+
+    .contact-box p,
+    .contact-box a {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-box p {
+      margin-bottom: 10px;
+    }
+
+    .contact-box a {
+      color: #bfdbfe;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px;
+      color: #6b7280;
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding: 45px 18px;
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 35px;
+      }
+
+      .hero-subtitle {
+        font-size: 17px;
+      }
+
+      .profile-circle {
+        width: 125px;
+        height: 125px;
+      }
+
+      nav a {
+        margin: 4px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero-card">
+
+    <div class="profile-circle">
+      <img src="images/profil.jpg" alt="Profilbild von Mohammad Fazli">
+    </div>
+
+    <h1>Mohammad Fazli</h1>
+
+    <p class="hero-subtitle">
+      <span class="typing-text"></span>
+    </p>
+
+    <p class="hero-info">
+      
+Ich entwickle meine Kenntnisse sowohl im Bereich Webentwicklung (Python, Flask, SQL)
+als auch in der Softwareentwicklung mit C# und .NET kontinuierlich weiter.
+Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme Schritt für Schritt zu lösen.
+</p>
+
+    <div class="hero-features">
+      ✔ Softwareentwicklung &nbsp;&nbsp; ✔ Backend & Datenbanken &nbsp;&nbsp; ✔ Webentwicklung
+    </div>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">🚀 Projekte ansehen</a>
+      <a href="#skills" class="btn btn-secondary">💻 Kenntnisse</a>
+      <a href="#contact" class="btn btn-glass">📩 Kontakt aufnehmen</a>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">Über mich</a>
+  <a href="#skills">Kenntnisse</a>
+  <a href="#projects">Projekte</a>
+  <a href="#experience">Erfahrung</a>
+  <a href="#education">Bildung</a>
+  <a href="#contact">Kontakt</a>
+  <a href="#learning">Lernen</a>
+</nav>
+
+<main>
+
+  <section id="about">
+    <h2>Über mich</h2>
+    <p class="section-intro">
+      Ich befinde mich aktuell in einer Umschulung zum Fachinformatiker für Anwendungsentwicklung
+      am Comcave College in Duisburg.
+    </p>
+    <p>
+      Mein Schwerpunkt liegt auf Python, Flask, SQL, Webentwicklung und datenbankgestützten Anwendungen.
+      Durch eigene Projekte baue ich meine praktischen Fähigkeiten Schritt für Schritt aus.
+      Besonders interessieren mich Backend-Entwicklung, Datenbanken, sichere Login-Systeme und moderne Webanwendungen.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>IT-Kenntnisse</h2>
+    <div class="grid">
+      
+      <div class="skill">🐍 Python</div>
+      <div class="skill">🌐 Flask</div>
+      <div class="skill">💻 C# (Grundlagen)</div>
+      <div class="skill">🧱 .NET (Basics)</div>
+      <div class="skill">🗄️ SQL & SQLite</div>
+      <div class="skill">📄 HTML</div>
+      <div class="skill">🎨 CSS</div>
+      <div class="skill">📊 UML</div>
+      <div class="skill">⚙️ Git & GitHub</div>
+      <div class="skill">💼 SAP S/4HANA Grundlagen</div>
+      <div class="skill">📁 Microsoft Office</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projekte</h2>
+    <p class="section-intro">
+      Hier zeige ich eigene Projekte, mit denen ich meine Kenntnisse in Webentwicklung,
+      Datenbanken und Softwareentwicklung praktisch anwende.
+    </p>
+
+    <div class="grid">
+
+      <div class="project">
+  <h3>C# Taschenrechner</h3>
+
+  <div>
+    <span class="tag">C#</span>
+    <span class="tag">Konsole</span>
+    <span class="tag">Grundlagen</span>
+  </div>
+
+  <p>
+    Ein kleines Konsolenprojekt zum Üben der C# Grundlagen.
+    Das Programm führt einfache Rechenoperationen aus.
+  </p>
+
+  <ul>
+    <li>Eingabe von Zahlen über die Konsole</li>
+    <li>Rechnen mit +, -, * und /</li>
+    <li>if-else Bedingungen</li>
+    <li>Fehlerbehandlung bei Division durch 0</li>
+  </ul>
+</div>
+
+      <div class="project">
+        <h3>Chat-Anwendung mit Python & Flask</h3>
+        <img src="images/chat-app.jpg" alt="Screenshot der Chat-Anwendung" class="project-img">
+
+        <div>
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">SQLite</span>
+        </div>
+
+        <p>
+          Eine eigene Webanwendung mit Registrierung, Login, Datenbankanbindung und Datei-Upload.
+        </p>
+        <ul>
+          <li>Benutzerregistrierung und Login-System</li>
+          <li>Datenbankanbindung mit SQLite</li>
+          <li>Backend-Logik mit Flask</li>
+          <li>Upload-Funktion für Dateien</li>
+        </ul>
+
+        <div class="project-buttons">
+          <a href="#contact" class="btn btn-dark">Projekt besprechen</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Restaurant Menü System & QR Lösung</h3>
+
+        <img src="images/menu-project.jpg" alt="Digitale QR-Speisekarte" class="project-img">
+
+        <div>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+
+        <p>
+          Eine moderne digitale Speisekarte, optimiert für Smartphone, Struktur und einfache Bedienung.
+        </p>
+        <ul>
+          <li>Mobile Ansicht</li>
+          <li>Kategorien für Speisen und Getränke</li>
+          <li>Modernes Webdesign</li>
+          <li>Responsive Darstellung</li>
+        </ul>
+
+        <div class="project-buttons">
+          <a href="M1.pdf" target="_blank" class="btn btn-secondary">📄 Menü ansehen</a>
+          <a href="#contact" class="btn btn-dark">📩 Kontakt</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <h3>Portfolio-Website</h3>
+        <img src="images/website.jpg" alt="Screenshot der Portfolio-Website" class="project-img">
+
+        <div>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Responsive</span>
+        </div>
+
+        <p>
+          Meine eigene Portfolio-Website zur Präsentation meiner Kenntnisse, Projekte und beruflichen Entwicklung.
+        </p>
+        <ul>
+          <li>Modernes Webdesign</li>
+          <li>Responsive Darstellung</li>
+          <li>Projektübersicht</li>
+          <li>Kontaktbereich</li>
+        </ul>
+
+        <div class="project-buttons">
+          <a href="#contact" class="btn btn-dark">Kontakt aufnehmen</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="learning">
+  <h2>Lernfortschritt</h2>
+
+  <p class="section-intro">
+    Ich erweitere kontinuierlich meine Kenntnisse in der Softwareentwicklung und arbeite aktiv daran,
+    neue Technologien zu verstehen und praktisch anzuwenden.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>C# & .NET Grundlagen</h3>
+      <ul>
+        <li>Konsolenanwendungen</li>
+        <li>Variablen, Schleifen, Bedingungen</li>
+        <li>Methoden und einfache Programme</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Softwareentwicklung</h3>
+      <ul>
+        <li>Logisches Denken & Problemlösung</li>
+        <li>Strukturierte Programmierung</li>
+        <li>Schrittweises Lernen neuer Technologien</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+  <section id="experience">
+    <h2>Berufserfahrung</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Glasfasermonteur – Vovomax GmbH</h3>
+        <p>06/2024 – 10/2024</p>
+        <ul>
+          <li>Installation und Wartung von Glasfasernetzen</li>
+          <li>Verlegung von Glasfaserkabeln</li>
+          <li>Grundlagen der IT-Systemtechnik</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Lagerhelfer / Qualitätskontrolle</h3>
+        <p>09/2022 – 05/2024</p>
+        <ul>
+          <li>Durchführung von Qualitätsprüfungen</li>
+          <li>Organisation und Verwaltung von Lagerbeständen</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Schichtleiter / Servicekraft</h3>
+        <p>12/2018 – 06/2020</p>
+        <ul>
+          <li>Schichtleitung und Koordination des Teams</li>
+          <li>Organisation der Arbeitsabläufe</li>
+          <li>Verantwortung für Qualität und Kundenservice</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Bildung</h2>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Umschulung zum Fachinformatiker für Anwendungsentwicklung</h3>
+        <p>seit 07/2025 – Comcave College Duisburg</p>
+        <ul>
+          <li>Python, SQL, UML</li>
+          <li>Softwareentwicklung</li>
+          <li>Webentwicklung</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Vorbereitung auf die IT-Umschulung</h3>
+        <p>04/2025 – 06/2025 – Comcave College Duisburg</p>
+      </div>
+
+      <div class="card">
+        <h3>Fachoberschulreife (FOR-Q)</h3>
+        <p>Berufskolleg Walter-Rathenau, Duisburg</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <div class="contact-box">
+      <p>E-Mail: <a href="mailto:mohammadfazli5566@gmail.com">mohammadfazli5566@gmail.com</a></p>
+      <p>WhatsApp: <a href="https://wa.me/491782668156" target="_blank">0178 2668156</a></p>
+      <p>Standort: Duisburg</p>
+      <br>
+      <a href="mailto:mohammadfazli5566@gmail.com" class="btn btn-primary">📩 Jetzt Kontakt aufnehmen</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Mohammad Fazli | Portfolio-Webseite</p>
+</footer>
+
+<script>
+  const text = "Software Developer | Python | Flask | SQL | Backend & Web";
+  const typingElement = document.querySelector(".typing-text");
+
+  let index = 0;
+
+  function typeText() {
+    if (index < text.length) {
+      typingElement.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeText, 55);
+    }
+  }
+
+  typeText();
+</script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  });
+
+  document.querySelectorAll("section").forEach((el) => {
+    el.classList.add("hidden");
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
