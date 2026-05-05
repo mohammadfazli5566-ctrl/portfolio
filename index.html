@@ -6,15 +6,9 @@
   <title>Mohammad Fazli | Portfolio</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, sans-serif;
@@ -23,6 +17,43 @@
         linear-gradient(180deg, #eef2f7, #f8fafc);
       color: #1f2937;
       line-height: 1.6;
+    }
+
+    body[dir="rtl"] {
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .language-switch {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 999;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    body[dir="rtl"] .language-switch {
+      right: auto;
+      left: 15px;
+    }
+
+    .language-switch button {
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: bold;
+      cursor: pointer;
+      background: white;
+      color: #1e40af;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      transition: 0.3s;
+    }
+
+    .language-switch button:hover {
+      transform: translateY(-2px);
+      background: #2563eb;
+      color: white;
     }
 
     header {
@@ -92,9 +123,7 @@
       display: block;
     }
 
-    .profile-circle:hover {
-      transform: scale(1.06);
-    }
+    .profile-circle:hover { transform: scale(1.06); }
 
     h1 {
       font-size: 42px;
@@ -118,10 +147,15 @@
       animation: cursorBlink 0.8s infinite;
     }
 
+    body[dir="rtl"] .typing-text {
+      border-right: none;
+      border-left: 3px solid white;
+      padding-right: 0;
+      padding-left: 6px;
+    }
+
     @keyframes cursorBlink {
-      50% {
-        border-color: transparent;
-      }
+      50% { border-color: transparent; }
     }
 
     .hero-info {
@@ -176,9 +210,7 @@
       transition: 0.6s;
     }
 
-    .btn:hover::after {
-      left: 120%;
-    }
+    .btn:hover::after { left: 120%; }
 
     .btn:hover {
       transform: translateY(-5px) scale(1.05);
@@ -260,6 +292,13 @@
       padding-left: 14px;
     }
 
+    body[dir="rtl"] h2 {
+      border-left: none;
+      padding-left: 0;
+      border-right: 7px solid #2563eb;
+      padding-right: 14px;
+    }
+
     .section-intro {
       margin-bottom: 20px;
       color: #4b5563;
@@ -323,9 +362,7 @@
       transition: 0.4s ease;
     }
 
-    .project:hover .project-img {
-      transform: scale(1.04);
-    }
+    .project:hover .project-img { transform: scale(1.04); }
 
     .tag {
       display: inline-block;
@@ -343,9 +380,12 @@
       margin-top: 8px;
     }
 
-    li {
-      margin-bottom: 6px;
+    body[dir="rtl"] ul {
+      margin-left: 0;
+      margin-right: 20px;
     }
+
+    li { margin-bottom: 6px; }
 
     .project-buttons {
       margin-top: 15px;
@@ -381,9 +421,7 @@
       z-index: 1;
     }
 
-    .contact-box p {
-      margin-bottom: 10px;
-    }
+    .contact-box p { margin-bottom: 10px; }
 
     .contact-box a {
       color: #bfdbfe;
@@ -409,18 +447,30 @@
     }
 
     @media (max-width: 650px) {
+      .language-switch {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+      }
+
+      body[dir="rtl"] .language-switch {
+        right: auto;
+        left: 12px;
+      }
+
+      .language-switch button {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
       header {
-        padding: 45px 18px;
+        padding: 70px 18px 45px;
         min-height: auto;
       }
 
-      h1 {
-        font-size: 35px;
-      }
+      h1 { font-size: 35px; }
 
-      .hero-subtitle {
-        font-size: 17px;
-      }
+      .hero-subtitle { font-size: 17px; }
 
       .profile-circle {
         width: 125px;
@@ -432,18 +482,20 @@
         font-size: 14px;
       }
 
-      section {
-        padding: 25px;
-      }
+      section { padding: 25px; }
 
-      h2 {
-        font-size: 24px;
-      }
+      h2 { font-size: 24px; }
     }
   </style>
 </head>
 
 <body>
+
+<div class="language-switch">
+  <button onclick="setLang('de')">Deutsch</button>
+  <button onclick="setLang('en')">English</button>
+  <button onclick="setLang('fa')">فارسی</button>
+</div>
 
 <header>
   <div class="hero-card">
@@ -458,102 +510,78 @@
       <span class="typing-text"></span>
     </p>
 
-    <p class="hero-info">
-      
-Ich entwickle meine Kenntnisse sowohl im Bereich Webentwicklung (Python, Flask, SQL)
-als auch in der Softwareentwicklung mit C# und .NET kontinuierlich weiter.
-Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme Schritt für Schritt zu lösen.
-</p>
+    <p class="hero-info" data-key="heroInfo"></p>
 
-    <div class="hero-features">
-      ✔ Softwareentwicklung &nbsp;&nbsp; ✔ Backend & Datenbanken &nbsp;&nbsp; ✔ Webentwicklung
-    </div>
+    <div class="hero-features" data-key="heroFeatures"></div>
 
     <div class="hero-buttons">
-      <a href="#projects" class="btn btn-primary">🚀 Projekte ansehen</a>
-      <a href="#skills" class="btn btn-secondary">💻 Kenntnisse</a>
-      <a href="#contact" class="btn btn-glass">📩 Kontakt aufnehmen</a>
+      <a href="#projects" class="btn btn-primary" data-key="heroBtnProjects"></a>
+      <a href="#skills" class="btn btn-secondary" data-key="heroBtnSkills"></a>
+      <a href="#contact" class="btn btn-glass" data-key="heroBtnContact"></a>
     </div>
   </div>
 </header>
 
 <nav>
-  <a href="#about">Über mich</a>
-  <a href="#skills">Kenntnisse</a>
-  <a href="#projects">Projekte</a>
-  <a href="#experience">Erfahrung</a>
-  <a href="#education">Bildung</a>
-  <a href="#contact">Kontakt</a>
-  <a href="#learning">Lernen</a>
+  <a href="#about" data-key="navAbout"></a>
+  <a href="#skills" data-key="navSkills"></a>
+  <a href="#projects" data-key="navProjects"></a>
+  <a href="#experience" data-key="navExperience"></a>
+  <a href="#education" data-key="navEducation"></a>
+  <a href="#contact" data-key="navContact"></a>
+  <a href="#learning" data-key="navLearning"></a>
 </nav>
 
 <main>
 
   <section id="about">
-    <h2>Über mich</h2>
-    <p class="section-intro">
-      Ich befinde mich aktuell in einer Umschulung zum Fachinformatiker für Anwendungsentwicklung
-      am Comcave College in Duisburg.
-    </p>
-    <p>
-      Mein Schwerpunkt liegt auf Python, Flask, SQL, Webentwicklung und datenbankgestützten Anwendungen.
-      Durch eigene Projekte baue ich meine praktischen Fähigkeiten Schritt für Schritt aus.
-      Besonders interessieren mich Backend-Entwicklung, Datenbanken, sichere Login-Systeme und moderne Webanwendungen.
-    </p>
+    <h2 data-key="aboutTitle"></h2>
+    <p class="section-intro" data-key="aboutIntro"></p>
+    <p data-key="aboutText"></p>
   </section>
 
   <section id="skills">
-    <h2>IT-Kenntnisse</h2>
+    <h2 data-key="skillsTitle"></h2>
     <div class="grid">
-      
       <div class="skill">🐍 Python</div>
       <div class="skill">🌐 Flask</div>
-      <div class="skill">💻 C# (Grundlagen)</div>
-      <div class="skill">🧱 .NET (Basics)</div>
+      <div class="skill">💻 C#</div>
+      <div class="skill">🧱 .NET</div>
       <div class="skill">🗄️ SQL & SQLite</div>
       <div class="skill">📄 HTML</div>
       <div class="skill">🎨 CSS</div>
       <div class="skill">📊 UML</div>
       <div class="skill">⚙️ Git & GitHub</div>
-      <div class="skill">💼 SAP S/4HANA Grundlagen</div>
+      <div class="skill">💼 SAP S/4HANA</div>
       <div class="skill">📁 Microsoft Office</div>
     </div>
   </section>
 
   <section id="projects">
-    <h2>Projekte</h2>
-    <p class="section-intro">
-      Hier zeige ich eigene Projekte, mit denen ich meine Kenntnisse in Webentwicklung,
-      Datenbanken und Softwareentwicklung praktisch anwende.
-    </p>
+    <h2 data-key="projectsTitle"></h2>
+    <p class="section-intro" data-key="projectsIntro"></p>
 
     <div class="grid">
 
       <div class="project">
-  <h3>C# Taschenrechner</h3>
-
-  <div>
-    <span class="tag">C#</span>
-    <span class="tag">Konsole</span>
-    <span class="tag">Grundlagen</span>
-  </div>
-
-  <p>
-    Ein kleines Konsolenprojekt zum Üben der C# Grundlagen.
-    Das Programm führt einfache Rechenoperationen aus.
-  </p>
-
-  <ul>
-    <li>Eingabe von Zahlen über die Konsole</li>
-    <li>Rechnen mit +, -, * und /</li>
-    <li>if-else Bedingungen</li>
-    <li>Fehlerbehandlung bei Division durch 0</li>
-  </ul>
-</div>
+        <h3 data-key="projectCalcTitle"></h3>
+        <div>
+          <span class="tag">C#</span>
+          <span class="tag">Console</span>
+          <span class="tag">Basics</span>
+        </div>
+        <p data-key="projectCalcText"></p>
+        <ul>
+          <li data-key="projectCalcLi1"></li>
+          <li data-key="projectCalcLi2"></li>
+          <li data-key="projectCalcLi3"></li>
+          <li data-key="projectCalcLi4"></li>
+        </ul>
+      </div>
 
       <div class="project">
-        <h3>Chat-Anwendung mit Python & Flask</h3>
-        <img src="images/chat-app.jpg" alt="Screenshot der Chat-Anwendung" class="project-img">
+        <h3 data-key="projectChatTitle"></h3>
+        <img src="images/chat-app.jpg" alt="Chat Application Screenshot" class="project-img">
 
         <div>
           <span class="tag">Python</span>
@@ -561,25 +589,22 @@ Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme
           <span class="tag">SQLite</span>
         </div>
 
-        <p>
-          Eine eigene Webanwendung mit Registrierung, Login, Datenbankanbindung und Datei-Upload.
-        </p>
+        <p data-key="projectChatText"></p>
         <ul>
-          <li>Benutzerregistrierung und Login-System</li>
-          <li>Datenbankanbindung mit SQLite</li>
-          <li>Backend-Logik mit Flask</li>
-          <li>Upload-Funktion für Dateien</li>
+          <li data-key="projectChatLi1"></li>
+          <li data-key="projectChatLi2"></li>
+          <li data-key="projectChatLi3"></li>
+          <li data-key="projectChatLi4"></li>
         </ul>
 
         <div class="project-buttons">
-          <a href="#contact" class="btn btn-dark">Projekt besprechen</a>
+          <a href="#contact" class="btn btn-dark" data-key="projectDiscuss"></a>
         </div>
       </div>
 
       <div class="project">
-        <h3>Restaurant Menü System & QR Lösung</h3>
-
-        <img src="images/menu-project.jpg" alt="Digitale QR-Speisekarte" class="project-img">
+        <h3 data-key="projectMenuTitle"></h3>
+        <img src="images/menu-project.jpg" alt="Digital QR Menu" class="project-img">
 
         <div>
           <span class="tag">HTML</span>
@@ -587,25 +612,23 @@ Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme
           <span class="tag">Responsive Design</span>
         </div>
 
-        <p>
-          Eine moderne digitale Speisekarte, optimiert für Smartphone, Struktur und einfache Bedienung.
-        </p>
+        <p data-key="projectMenuText"></p>
         <ul>
-          <li>Mobile Ansicht</li>
-          <li>Kategorien für Speisen und Getränke</li>
-          <li>Modernes Webdesign</li>
-          <li>Responsive Darstellung</li>
+          <li data-key="projectMenuLi1"></li>
+          <li data-key="projectMenuLi2"></li>
+          <li data-key="projectMenuLi3"></li>
+          <li data-key="projectMenuLi4"></li>
         </ul>
 
         <div class="project-buttons">
-          <a href="M1.pdf" target="_blank" class="btn btn-secondary">📄 Menü ansehen</a>
-          <a href="#contact" class="btn btn-dark">📩 Kontakt</a>
+          <a href="M1.pdf" target="_blank" class="btn btn-secondary" data-key="menuView"></a>
+          <a href="#contact" class="btn btn-dark" data-key="contactShort"></a>
         </div>
       </div>
 
       <div class="project">
-        <h3>Portfolio-Website</h3>
-        <img src="images/website.jpg" alt="Screenshot der Portfolio-Website" class="project-img">
+        <h3 data-key="projectPortfolioTitle"></h3>
+        <img src="images/website.jpg" alt="Portfolio Website Screenshot" class="project-img">
 
         <div>
           <span class="tag">HTML</span>
@@ -613,18 +636,16 @@ Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme
           <span class="tag">Responsive</span>
         </div>
 
-        <p>
-          Meine eigene Portfolio-Website zur Präsentation meiner Kenntnisse, Projekte und beruflichen Entwicklung.
-        </p>
+        <p data-key="projectPortfolioText"></p>
         <ul>
-          <li>Modernes Webdesign</li>
-          <li>Responsive Darstellung</li>
-          <li>Projektübersicht</li>
-          <li>Kontaktbereich</li>
+          <li data-key="projectPortfolioLi1"></li>
+          <li data-key="projectPortfolioLi2"></li>
+          <li data-key="projectPortfolioLi3"></li>
+          <li data-key="projectPortfolioLi4"></li>
         </ul>
 
         <div class="project-buttons">
-          <a href="#contact" class="btn btn-dark">Kontakt aufnehmen</a>
+          <a href="#contact" class="btn btn-dark" data-key="contactButton"></a>
         </div>
       </div>
 
@@ -632,131 +653,460 @@ Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme
   </section>
 
   <section id="learning">
-  <h2>Lernfortschritt</h2>
+    <h2 data-key="learningTitle"></h2>
+    <p class="section-intro" data-key="learningIntro"></p>
 
-  <p class="section-intro">
-    Ich erweitere kontinuierlich meine Kenntnisse in der Softwareentwicklung und arbeite aktiv daran,
-    neue Technologien zu verstehen und praktisch anzuwenden.
-  </p>
+    <div class="grid">
+      <div class="card">
+        <h3 data-key="learningCard1Title"></h3>
+        <ul>
+          <li data-key="learningCard1Li1"></li>
+          <li data-key="learningCard1Li2"></li>
+          <li data-key="learningCard1Li3"></li>
+        </ul>
+      </div>
 
-  <div class="grid">
-
-    <div class="card">
-      <h3>C# & .NET Grundlagen</h3>
-      <ul>
-        <li>Konsolenanwendungen</li>
-        <li>Variablen, Schleifen, Bedingungen</li>
-        <li>Methoden und einfache Programme</li>
-      </ul>
+      <div class="card">
+        <h3 data-key="learningCard2Title"></h3>
+        <ul>
+          <li data-key="learningCard2Li1"></li>
+          <li data-key="learningCard2Li2"></li>
+          <li data-key="learningCard2Li3"></li>
+        </ul>
+      </div>
     </div>
-
-    <div class="card">
-      <h3>Softwareentwicklung</h3>
-      <ul>
-        <li>Logisches Denken & Problemlösung</li>
-        <li>Strukturierte Programmierung</li>
-        <li>Schrittweises Lernen neuer Technologien</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <section id="experience">
-    <h2>Berufserfahrung</h2>
-    <div class="grid">
+    <h2 data-key="experienceTitle"></h2>
 
+    <div class="grid">
       <div class="card">
-        <h3>Glasfasermonteur – Vovomax GmbH</h3>
+        <h3 data-key="exp1Title"></h3>
         <p>06/2024 – 10/2024</p>
         <ul>
-          <li>Installation und Wartung von Glasfasernetzen</li>
-          <li>Verlegung von Glasfaserkabeln</li>
-          <li>Grundlagen der IT-Systemtechnik</li>
+          <li data-key="exp1Li1"></li>
+          <li data-key="exp1Li2"></li>
+          <li data-key="exp1Li3"></li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>Lagerhelfer / Qualitätskontrolle</h3>
+        <h3 data-key="exp2Title"></h3>
         <p>09/2022 – 05/2024</p>
         <ul>
-          <li>Durchführung von Qualitätsprüfungen</li>
-          <li>Organisation und Verwaltung von Lagerbeständen</li>
+          <li data-key="exp2Li1"></li>
+          <li data-key="exp2Li2"></li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>Schichtleiter / Servicekraft</h3>
+        <h3 data-key="exp3Title"></h3>
         <p>12/2018 – 06/2020</p>
         <ul>
-          <li>Schichtleitung und Koordination des Teams</li>
-          <li>Organisation der Arbeitsabläufe</li>
-          <li>Verantwortung für Qualität und Kundenservice</li>
+          <li data-key="exp3Li1"></li>
+          <li data-key="exp3Li2"></li>
+          <li data-key="exp3Li3"></li>
         </ul>
       </div>
-
     </div>
   </section>
 
   <section id="education">
-    <h2>Bildung</h2>
-    <div class="grid">
+    <h2 data-key="educationTitle"></h2>
 
+    <div class="grid">
       <div class="card">
-        <h3>Umschulung zum Fachinformatiker für Anwendungsentwicklung</h3>
-        <p>seit 07/2025 – Comcave College Duisburg</p>
+        <h3 data-key="edu1Title"></h3>
+        <p data-key="edu1Date"></p>
         <ul>
           <li>Python, SQL, UML</li>
-          <li>Softwareentwicklung</li>
-          <li>Webentwicklung</li>
+          <li data-key="edu1Li2"></li>
+          <li data-key="edu1Li3"></li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>Vorbereitung auf die IT-Umschulung</h3>
-        <p>04/2025 – 06/2025 – Comcave College Duisburg</p>
+        <h3 data-key="edu2Title"></h3>
+        <p data-key="edu2Date"></p>
       </div>
 
       <div class="card">
-        <h3>Fachoberschulreife (FOR-Q)</h3>
-        <p>Berufskolleg Walter-Rathenau, Duisburg</p>
+        <h3 data-key="edu3Title"></h3>
+        <p data-key="edu3School"></p>
       </div>
-
     </div>
   </section>
 
   <section id="contact">
-    <h2>Kontakt</h2>
+    <h2 data-key="contactTitle"></h2>
+
     <div class="contact-box">
-      <p>E-Mail: <a href="mailto:mohammadfazli5566@gmail.com">mohammadfazli5566@gmail.com</a></p>
-      <p>WhatsApp: <a href="https://wa.me/491782668156" target="_blank">0178 2668156</a></p>
-      <p>Standort: Duisburg</p>
+      <p>
+        <span data-key="emailLabel"></span>:
+        <a href="mailto:mohammadfazli5566@gmail.com">mohammadfazli5566@gmail.com</a>
+      </p>
+      <p>
+        WhatsApp:
+        <a href="https://wa.me/491782668156" target="_blank">0178 2668156</a>
+      </p>
+      <p>
+        <span data-key="locationLabel"></span>: Duisburg
+      </p>
       <br>
-      <a href="mailto:mohammadfazli5566@gmail.com" class="btn btn-primary">📩 Jetzt Kontakt aufnehmen</a>
+      <a href="mailto:mohammadfazli5566@gmail.com" class="btn btn-primary" data-key="contactNow"></a>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <p>© 2026 Mohammad Fazli | Portfolio-Webseite</p>
+  <p data-key="footerText"></p>
 </footer>
 
 <script>
-  const text = "Software Developer | Python | Flask | SQL | Backend & Web";
-  const typingElement = document.querySelector(".typing-text");
+  const translations = {
+    de: {
+      typing: "Softwareentwickler | Python | Flask | SQL | Backend & Web",
+      heroInfo: "Ich entwickle meine Kenntnisse sowohl im Bereich Webentwicklung mit Python, Flask und SQL als auch in der Softwareentwicklung mit C# und .NET kontinuierlich weiter. Mein Fokus liegt darauf, praktische Erfahrungen zu sammeln und komplexe Probleme Schritt für Schritt zu lösen.",
+      heroFeatures: "✔ Softwareentwicklung   ✔ Backend & Datenbanken   ✔ Webentwicklung",
+      heroBtnProjects: "🚀 Projekte ansehen",
+      heroBtnSkills: "💻 Kenntnisse",
+      heroBtnContact: "📩 Kontakt aufnehmen",
 
-  let index = 0;
+      navAbout: "Über mich",
+      navSkills: "Kenntnisse",
+      navProjects: "Projekte",
+      navExperience: "Erfahrung",
+      navEducation: "Bildung",
+      navContact: "Kontakt",
+      navLearning: "Lernen",
 
-  function typeText() {
-    if (index < text.length) {
-      typingElement.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeText, 55);
+      aboutTitle: "Über mich",
+      aboutIntro: "Ich befinde mich aktuell in einer Umschulung zum Fachinformatiker für Anwendungsentwicklung am Comcave College in Duisburg.",
+      aboutText: "Mein Schwerpunkt liegt auf Python, Flask, SQL, Webentwicklung und datenbankgestützten Anwendungen. Durch eigene Projekte baue ich meine praktischen Fähigkeiten Schritt für Schritt aus. Besonders interessieren mich Backend-Entwicklung, Datenbanken, sichere Login-Systeme und moderne Webanwendungen.",
+
+      skillsTitle: "IT-Kenntnisse",
+
+      projectsTitle: "Projekte",
+      projectsIntro: "Hier zeige ich eigene Projekte, mit denen ich meine Kenntnisse in Webentwicklung, Datenbanken und Softwareentwicklung praktisch anwende.",
+
+      projectCalcTitle: "C# Taschenrechner",
+      projectCalcText: "Ein kleines Konsolenprojekt zum Üben der C# Grundlagen. Das Programm führt einfache Rechenoperationen aus.",
+      projectCalcLi1: "Eingabe von Zahlen über die Konsole",
+      projectCalcLi2: "Rechnen mit +, -, * und /",
+      projectCalcLi3: "if-else Bedingungen",
+      projectCalcLi4: "Fehlerbehandlung bei Division durch 0",
+
+      projectChatTitle: "Chat-Anwendung mit Python & Flask",
+      projectChatText: "Eine eigene Webanwendung mit Registrierung, Login, Datenbankanbindung und Datei-Upload.",
+      projectChatLi1: "Benutzerregistrierung und Login-System",
+      projectChatLi2: "Datenbankanbindung mit SQLite",
+      projectChatLi3: "Backend-Logik mit Flask",
+      projectChatLi4: "Upload-Funktion für Dateien",
+
+      projectMenuTitle: "Restaurant Menü System & QR Lösung",
+      projectMenuText: "Eine moderne digitale Speisekarte, optimiert für Smartphone, Struktur und einfache Bedienung.",
+      projectMenuLi1: "Mobile Ansicht",
+      projectMenuLi2: "Kategorien für Speisen und Getränke",
+      projectMenuLi3: "Modernes Webdesign",
+      projectMenuLi4: "Responsive Darstellung",
+
+      projectPortfolioTitle: "Portfolio-Website",
+      projectPortfolioText: "Meine eigene Portfolio-Website zur Präsentation meiner Kenntnisse, Projekte und beruflichen Entwicklung.",
+      projectPortfolioLi1: "Modernes Webdesign",
+      projectPortfolioLi2: "Responsive Darstellung",
+      projectPortfolioLi3: "Projektübersicht",
+      projectPortfolioLi4: "Kontaktbereich",
+
+      projectDiscuss: "Projekt besprechen",
+      menuView: "📄 Menü ansehen",
+      contactShort: "📩 Kontakt",
+      contactButton: "Kontakt aufnehmen",
+
+      learningTitle: "Lernfortschritt",
+      learningIntro: "Ich erweitere kontinuierlich meine Kenntnisse in der Softwareentwicklung und arbeite aktiv daran, neue Technologien zu verstehen und praktisch anzuwenden.",
+      learningCard1Title: "C# & .NET Grundlagen",
+      learningCard1Li1: "Konsolenanwendungen",
+      learningCard1Li2: "Variablen, Schleifen, Bedingungen",
+      learningCard1Li3: "Methoden und einfache Programme",
+      learningCard2Title: "Softwareentwicklung",
+      learningCard2Li1: "Logisches Denken & Problemlösung",
+      learningCard2Li2: "Strukturierte Programmierung",
+      learningCard2Li3: "Schrittweises Lernen neuer Technologien",
+
+      experienceTitle: "Berufserfahrung",
+      exp1Title: "Glasfasermonteur – Vovomax GmbH",
+      exp1Li1: "Installation und Wartung von Glasfasernetzen",
+      exp1Li2: "Verlegung von Glasfaserkabeln",
+      exp1Li3: "Grundlagen der IT-Systemtechnik",
+      exp2Title: "Lagerhelfer / Qualitätskontrolle",
+      exp2Li1: "Durchführung von Qualitätsprüfungen",
+      exp2Li2: "Organisation und Verwaltung von Lagerbeständen",
+      exp3Title: "Schichtleiter / Servicekraft",
+      exp3Li1: "Schichtleitung und Koordination des Teams",
+      exp3Li2: "Organisation der Arbeitsabläufe",
+      exp3Li3: "Verantwortung für Qualität und Kundenservice",
+
+      educationTitle: "Bildung",
+      edu1Title: "Umschulung zum Fachinformatiker für Anwendungsentwicklung",
+      edu1Date: "seit 07/2025 – Comcave College Duisburg",
+      edu1Li2: "Softwareentwicklung",
+      edu1Li3: "Webentwicklung",
+      edu2Title: "Vorbereitung auf die IT-Umschulung",
+      edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
+      edu3Title: "Fachoberschulreife (FOR-Q)",
+      edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
+
+      contactTitle: "Kontakt",
+      emailLabel: "E-Mail",
+      locationLabel: "Standort",
+      contactNow: "📩 Jetzt Kontakt aufnehmen",
+
+      footerText: "© 2026 Mohammad Fazli | Portfolio-Webseite"
+    },
+
+    en: {
+      typing: "Software Developer | Python | Flask | SQL | Backend & Web",
+      heroInfo: "I continuously improve my skills in web development with Python, Flask and SQL, as well as software development with C# and .NET. My focus is on gaining practical experience and solving complex problems step by step.",
+      heroFeatures: "✔ Software Development   ✔ Backend & Databases   ✔ Web Development",
+      heroBtnProjects: "🚀 View Projects",
+      heroBtnSkills: "💻 Skills",
+      heroBtnContact: "📩 Contact Me",
+
+      navAbout: "About me",
+      navSkills: "Skills",
+      navProjects: "Projects",
+      navExperience: "Experience",
+      navEducation: "Education",
+      navContact: "Contact",
+      navLearning: "Learning",
+
+      aboutTitle: "About me",
+      aboutIntro: "I am currently completing retraining as an IT specialist for application development at Comcave College in Duisburg.",
+      aboutText: "My focus is on Python, Flask, SQL, web development and database-driven applications. Through my own projects, I improve my practical skills step by step. I am especially interested in backend development, databases, secure login systems and modern web applications.",
+
+      skillsTitle: "IT Skills",
+
+      projectsTitle: "Projects",
+      projectsIntro: "Here I present my own projects, where I apply my knowledge in web development, databases and software development in practice.",
+
+      projectCalcTitle: "C# Calculator",
+      projectCalcText: "A small console project to practice C# basics. The program performs simple arithmetic operations.",
+      projectCalcLi1: "Input of numbers through the console",
+      projectCalcLi2: "Calculations with +, -, * and /",
+      projectCalcLi3: "if-else conditions",
+      projectCalcLi4: "Error handling for division by zero",
+
+      projectChatTitle: "Chat Application with Python & Flask",
+      projectChatText: "A web application with registration, login, database connection and file upload.",
+      projectChatLi1: "User registration and login system",
+      projectChatLi2: "Database connection with SQLite",
+      projectChatLi3: "Backend logic with Flask",
+      projectChatLi4: "File upload feature",
+
+      projectMenuTitle: "Restaurant Menu System & QR Solution",
+      projectMenuText: "A modern digital menu optimized for smartphones, clear structure and easy use.",
+      projectMenuLi1: "Mobile view",
+      projectMenuLi2: "Categories for food and drinks",
+      projectMenuLi3: "Modern web design",
+      projectMenuLi4: "Responsive layout",
+
+      projectPortfolioTitle: "Portfolio Website",
+      projectPortfolioText: "My personal portfolio website to present my skills, projects and professional development.",
+      projectPortfolioLi1: "Modern web design",
+      projectPortfolioLi2: "Responsive layout",
+      projectPortfolioLi3: "Project overview",
+      projectPortfolioLi4: "Contact section",
+
+      projectDiscuss: "Discuss Project",
+      menuView: "📄 View Menu",
+      contactShort: "📩 Contact",
+      contactButton: "Contact Me",
+
+      learningTitle: "Learning Progress",
+      learningIntro: "I continuously expand my software development skills and actively work on understanding and applying new technologies in practice.",
+      learningCard1Title: "C# & .NET Basics",
+      learningCard1Li1: "Console applications",
+      learningCard1Li2: "Variables, loops and conditions",
+      learningCard1Li3: "Methods and simple programs",
+      learningCard2Title: "Software Development",
+      learningCard2Li1: "Logical thinking & problem solving",
+      learningCard2Li2: "Structured programming",
+      learningCard2Li3: "Step-by-step learning of new technologies",
+
+      experienceTitle: "Work Experience",
+      exp1Title: "Fiber Optic Technician – Vovomax GmbH",
+      exp1Li1: "Installation and maintenance of fiber optic networks",
+      exp1Li2: "Laying fiber optic cables",
+      exp1Li3: "Basics of IT systems technology",
+      exp2Title: "Warehouse Assistant / Quality Control",
+      exp2Li1: "Quality inspections",
+      exp2Li2: "Organization and management of warehouse stock",
+      exp3Title: "Shift Leader / Service Staff",
+      exp3Li1: "Shift management and team coordination",
+      exp3Li2: "Organization of work processes",
+      exp3Li3: "Responsibility for quality and customer service",
+
+      educationTitle: "Education",
+      edu1Title: "Retraining as IT Specialist for Application Development",
+      edu1Date: "since 07/2025 – Comcave College Duisburg",
+      edu1Li2: "Software development",
+      edu1Li3: "Web development",
+      edu2Title: "Preparation for IT Retraining",
+      edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
+      edu3Title: "Secondary School Certificate (FOR-Q)",
+      edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
+
+      contactTitle: "Contact",
+      emailLabel: "Email",
+      locationLabel: "Location",
+      contactNow: "📩 Contact Me Now",
+
+      footerText: "© 2026 Mohammad Fazli | Portfolio Website"
+    },
+
+    fa: {
+      typing: "برنامه‌نویس نرم‌افزار | Python | Flask | SQL | Backend و Web",
+      heroInfo: "من مهارت‌های خود را در زمینه توسعه وب با Python، Flask و SQL و همچنین برنامه‌نویسی با C# و .NET به صورت مداوم تقویت می‌کنم. تمرکز من روی کسب تجربه عملی و حل مرحله‌به‌مرحله مشکلات پیچیده است.",
+      heroFeatures: "✔ توسعه نرم‌افزار   ✔ بک‌اند و دیتابیس   ✔ طراحی وب",
+      heroBtnProjects: "🚀 مشاهده پروژه‌ها",
+      heroBtnSkills: "💻 مهارت‌ها",
+      heroBtnContact: "📩 تماس با من",
+
+      navAbout: "درباره من",
+      navSkills: "مهارت‌ها",
+      navProjects: "پروژه‌ها",
+      navExperience: "تجربه کاری",
+      navEducation: "تحصیلات",
+      navContact: "تماس",
+      navLearning: "یادگیری",
+
+      aboutTitle: "درباره من",
+      aboutIntro: "من در حال حاضر در دوره آموزش مجدد رشته Fachinformatiker für Anwendungsentwicklung در Comcave College Duisburg هستم.",
+      aboutText: "تمرکز من روی Python، Flask، SQL، توسعه وب و برنامه‌های مبتنی بر دیتابیس است. با انجام پروژه‌های شخصی، مهارت‌های عملی خود را مرحله‌به‌مرحله تقویت می‌کنم. به توسعه بک‌اند، دیتابیس‌ها، سیستم‌های ورود امن و وب‌اپلیکیشن‌های مدرن علاقه زیادی دارم.",
+
+      skillsTitle: "مهارت‌های IT",
+
+      projectsTitle: "پروژه‌ها",
+      projectsIntro: "اینجا پروژه‌های شخصی خود را نشان می‌دهم که در آن‌ها دانش خود را در توسعه وب، دیتابیس و برنامه‌نویسی به صورت عملی استفاده کرده‌ام.",
+
+      projectCalcTitle: "ماشین حساب با C#",
+      projectCalcText: "یک پروژه کوچک کنسولی برای تمرین مبانی C#. این برنامه عملیات ساده ریاضی انجام می‌دهد.",
+      projectCalcLi1: "وارد کردن عدد از طریق کنسول",
+      projectCalcLi2: "محاسبه با +، -، * و /",
+      projectCalcLi3: "شرط‌های if-else",
+      projectCalcLi4: "مدیریت خطا هنگام تقسیم بر صفر",
+
+      projectChatTitle: "برنامه چت با Python و Flask",
+      projectChatText: "یک وب‌اپلیکیشن با ثبت‌نام، ورود، اتصال به دیتابیس و آپلود فایل.",
+      projectChatLi1: "سیستم ثبت‌نام و ورود کاربران",
+      projectChatLi2: "اتصال به دیتابیس با SQLite",
+      projectChatLi3: "منطق بک‌اند با Flask",
+      projectChatLi4: "امکان آپلود فایل",
+
+      projectMenuTitle: "سیستم منوی رستوران و QR",
+      projectMenuText: "یک منوی دیجیتال مدرن، مناسب موبایل، ساختارمند و ساده برای استفاده.",
+      projectMenuLi1: "نمایش مناسب موبایل",
+      projectMenuLi2: "دسته‌بندی غذاها و نوشیدنی‌ها",
+      projectMenuLi3: "طراحی وب مدرن",
+      projectMenuLi4: "طراحی واکنش‌گرا",
+
+      projectPortfolioTitle: "وبسایت پورتفولیو",
+      projectPortfolioText: "وبسایت شخصی من برای نمایش مهارت‌ها، پروژه‌ها و مسیر پیشرفت حرفه‌ای.",
+      projectPortfolioLi1: "طراحی وب مدرن",
+      projectPortfolioLi2: "نمایش واکنش‌گرا",
+      projectPortfolioLi3: "نمایش پروژه‌ها",
+      projectPortfolioLi4: "بخش تماس",
+
+      projectDiscuss: "گفتگو درباره پروژه",
+      menuView: "📄 مشاهده منو",
+      contactShort: "📩 تماس",
+      contactButton: "تماس با من",
+
+      learningTitle: "روند یادگیری",
+      learningIntro: "من به صورت مداوم مهارت‌های خود را در توسعه نرم‌افزار افزایش می‌دهم و تلاش می‌کنم فناوری‌های جدید را بهتر بفهمم و به صورت عملی استفاده کنم.",
+      learningCard1Title: "مبانی C# و .NET",
+      learningCard1Li1: "برنامه‌های کنسولی",
+      learningCard1Li2: "متغیرها، حلقه‌ها و شرط‌ها",
+      learningCard1Li3: "متدها و برنامه‌های ساده",
+      learningCard2Title: "توسعه نرم‌افزار",
+      learningCard2Li1: "تفکر منطقی و حل مسئله",
+      learningCard2Li2: "برنامه‌نویسی ساختاریافته",
+      learningCard2Li3: "یادگیری مرحله‌به‌مرحله فناوری‌های جدید",
+
+      experienceTitle: "تجربه کاری",
+      exp1Title: "تکنسین فیبر نوری – Vovomax GmbH",
+      exp1Li1: "نصب و نگهداری شبکه‌های فیبر نوری",
+      exp1Li2: "کابل‌کشی فیبر نوری",
+      exp1Li3: "آشنایی با مبانی IT-Systemtechnik",
+      exp2Title: "کمک‌کار انبار / کنترل کیفیت",
+      exp2Li1: "انجام کنترل کیفیت",
+      exp2Li2: "سازماندهی و مدیریت موجودی انبار",
+      exp3Title: "سرشیفت / نیروی خدمات",
+      exp3Li1: "مدیریت شیفت و هماهنگی تیم",
+      exp3Li2: "سازماندهی روند کار",
+      exp3Li3: "مسئولیت کیفیت و خدمات مشتری",
+
+      educationTitle: "تحصیلات",
+      edu1Title: "آموزش مجدد Fachinformatiker für Anwendungsentwicklung",
+      edu1Date: "از 07/2025 – Comcave College Duisburg",
+      edu1Li2: "توسعه نرم‌افزار",
+      edu1Li3: "توسعه وب",
+      edu2Title: "آمادگی برای دوره IT",
+      edu2Date: "04/2025 – 06/2025 – Comcave College Duisburg",
+      edu3Title: "مدرک FOR-Q",
+      edu3School: "Berufskolleg Walter-Rathenau, Duisburg",
+
+      contactTitle: "تماس",
+      emailLabel: "ایمیل",
+      locationLabel: "محل",
+      contactNow: "📩 همین حالا تماس بگیرید",
+
+      footerText: "© 2026 Mohammad Fazli | وبسایت پورتفولیو"
     }
+  };
+
+  let typingIndex = 0;
+  let typingTimer = null;
+
+  function typeText(text) {
+    const typingElement = document.querySelector(".typing-text");
+    typingElement.textContent = "";
+    typingIndex = 0;
+
+    if (typingTimer) {
+      clearTimeout(typingTimer);
+    }
+
+    function write() {
+      if (typingIndex < text.length) {
+        typingElement.textContent += text.charAt(typingIndex);
+        typingIndex++;
+        typingTimer = setTimeout(write, 55);
+      }
+    }
+
+    write();
   }
 
-  typeText();
+  function setLang(lang) {
+    const data = translations[lang];
+
+    document.documentElement.lang = lang;
+    document.body.dir = lang === "fa" ? "rtl" : "ltr";
+
+    document.querySelectorAll("[data-key]").forEach((el) => {
+      const key = el.getAttribute("data-key");
+      if (data[key]) {
+        el.textContent = data[key];
+      }
+    });
+
+    typeText(data.typing);
+  }
+
+  setLang("de");
 </script>
 
 <script>
